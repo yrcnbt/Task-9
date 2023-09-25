@@ -11,6 +11,7 @@ import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -30,7 +31,7 @@ public class User implements UserDetails {
 //    @JoinTable(name = "users_roles",
 //            joinColumns = @JoinColumn(name = "user_id"),
 //            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles;
+    private Set<Role> roles;
 
 
     @Column(name = "password")
@@ -53,7 +54,7 @@ public class User implements UserDetails {
     public void setName(String name) {
         this.username = name;
     }
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
 //        List<Role> roleEntities = roles.stream()
 //                .map(roleName -> new Role(null, roleName))
 //                .collect(Collectors.toList());
@@ -68,7 +69,7 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
@@ -85,7 +86,7 @@ public class User implements UserDetails {
     }
 
     @Override
-    public List<Role> getAuthorities() {
+    public Set<Role> getAuthorities() {
         return getRoles();
     }
 
