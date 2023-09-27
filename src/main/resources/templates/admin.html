@@ -17,7 +17,7 @@
             </td>
 
             <td>
-                <form th:method="DELETE" th:action="@{/users/{id}/remove(id=${user.getId()})}">
+                <form th:method="DELETE" th:action="@{/users/{id}/(id=${user.getId()})}">
                     <button type="submit">Remove</button>
                 </form>
             </td>

@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(Long id, User user) {
         User existingUser = ud.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
-        existingUser.setName(user.getUsername());
+        existingUser.setUsername(user.getUsername());
         existingUser.setRoles(user.getRoles());
         existingUser.setPassword(user.getPassword());
         existingUser.setEnabled(user.getEnabled());

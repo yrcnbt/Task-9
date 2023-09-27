@@ -28,9 +28,9 @@ public class User implements UserDetails {
 
     @Column(name = "role")
     @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(name = "users_roles",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
 
@@ -48,12 +48,18 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getName() {
+    public String getUsername() {
         return username;
     }
-    public void setName(String name) {
-        this.username = name;
+
+    public void setUsername(String username) {
+        this.username = username;
     }
+
+    public String getName(){
+        return username;
+    }
+
     public void setRoles(Set<Role> roles) {
 //        List<Role> roleEntities = roles.stream()
 //                .map(roleName -> new Role(null, roleName))
@@ -77,6 +83,8 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+
+
     @Override
     public String toString() {
         return "User{" +
@@ -95,10 +103,7 @@ public class User implements UserDetails {
         return password;
     }
 
-    @Override
-    public String getUsername() {
-        return username;
-    }
+
 
     @Override
     public boolean isAccountNonExpired() {
